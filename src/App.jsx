@@ -1,11 +1,38 @@
 import { useState } from "react"
+import { FaFacebookF } from "react-icons/fa6"
+import { SiDiscord, SiInstagram, SiTiktok, SiZalo } from "react-icons/si"
 
 const socials = [
-  { name: "Facebook", url: "#", icon: "f" },
-  { name: "Instagram", url: "#", icon: "◎" },
-  { name: "Zalo", url: "#", icon: "Z" },
-  { name: "TikTok", url: "#", icon: "♪" },
-  { name: "Discord", url: "#", icon: "D" },
+  {
+    name: "Facebook",
+    url: "https://www.facebook.com/profile.php?id=100093302792405",
+    icon: FaFacebookF,
+    brand: "facebook",
+  },
+  {
+    name: "Instagram",
+    url: "https://www.instagram.com/phusc_tran/",
+    icon: SiInstagram,
+    brand: "instagram",
+  },
+  {
+    name: "Zalo",
+    url: "https://zalo.me/0365386170",
+    icon: SiZalo,
+    brand: "zalo",
+  },
+  {
+    name: "TikTok",
+    url: "https://www.tiktok.com/@fab_16023?_r=1&_t=ZS-96JxJQtRFoY",
+    icon: SiTiktok,
+    brand: "tiktok",
+  },
+  {
+    name: "Discord",
+    url: "https://discord.gg/MNqkWt35Te",
+    icon: SiDiscord,
+    brand: "discord",
+  },
 ]
 
 const projects = [
@@ -268,12 +295,25 @@ function App() {
         <h2>Kết nối với Lumine</h2>
 
         <div className="socials">
-          {socials.map((s) => (
-            <a key={s.name} href={s.url} target="_blank" rel="noreferrer">
-              <span>{s.icon}</span>
-              {s.name}
-            </a>
-          ))}
+          {socials.map((s) => {
+            const Icon = s.icon
+
+            return (
+              <a
+                key={s.name}
+                href={s.url}
+                target="_blank"
+                rel="noreferrer"
+                className={`social-link ${s.brand}`}
+                aria-label={`Lumine on ${s.name}`}
+              >
+                <span className="social-icon">
+                  <Icon aria-hidden="true" />
+                </span>
+                {s.name}
+              </a>
+            )
+          })}
         </div>
       </section>
 
