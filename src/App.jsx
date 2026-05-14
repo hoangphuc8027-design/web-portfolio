@@ -135,8 +135,9 @@ function App() {
           <p className="eyebrow">MEDIA PROFILE / CINEMA STYLE</p>
 
           <h1>
-            Lumine
-            <span>Creative Media Portfolio</span>
+            <span className="hero-title-main">Lumine</span>
+            <span className="hero-owner">Trần Phusc</span>
+            <span className="hero-subtitle">Creative Media Portfolio</span>
           </h1>
 
           <p className="hero-desc">
