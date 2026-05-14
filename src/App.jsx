@@ -141,7 +141,7 @@ function App() {
           </h1>
 
           <p className="hero-desc">
-            Người sáng tạo nội dung, kể chuyện, dựng video và xây dựng trải nghiệm truyền thông mang hơi hướng điện ảnh.
+            Người sáng tạo nội dung, dựng video và xây dựng trải nghiệm truyền thông.
           </p>
 
           <div className="hero-actions">
