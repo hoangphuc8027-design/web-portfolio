@@ -760,33 +760,37 @@ footer p {
     width: calc(100% - 20px);
     top: 10px;
     left: 10px;
-    padding: 18px;
-    border-radius: 30px;
+    padding: 14px;
+    border-radius: 24px;
+    gap: 12px;
   }
 
   .brand {
-    font-size: 28px;
-    letter-spacing: 6px;
+    font-size: 20px;
+    letter-spacing: 5px;
+    gap: 9px;
   }
 
   .brand-dot {
-    width: 11px;
-    height: 11px;
+    width: 9px;
+    height: 9px;
   }
 
   .menu {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
   }
 
   .menu button {
-    min-height: 54px;
-    padding: 10px 12px;
-    font-size: 18px;
+    min-height: 38px;
+    padding: 7px 8px;
+    font-size: 14px;
+    line-height: 1.15;
   }
 
   .hero {
-    padding: 335px 8% 64px;
+    padding: 210px 8% 64px;
   }
 
   .eyebrow {
