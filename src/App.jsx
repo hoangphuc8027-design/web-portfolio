@@ -105,6 +105,7 @@ const clientFiles = [
     status: "Processing",
     updated: "14/05/2026",
     link: "https://drive.google.com",
+    password: "lumine2026",
   },
   {
     client: "Khách hàng B",
@@ -115,6 +116,7 @@ const clientFiles = [
     status: "Ready",
     updated: "14/05/2026",
     link: "https://drive.google.com",
+    password: "lumine2026",
   },
   {
     client: "Khách hàng C",
@@ -125,6 +127,7 @@ const clientFiles = [
     status: "Processing",
     updated: "Đang cập nhật",
     link: "#",
+    password: "lumine2026",
   },
 ]
 
@@ -132,10 +135,41 @@ const visibleClientFiles = clientFiles.slice(0, 1)
 
 function App() {
   const [activeTab, setActiveTab] = useState("home")
+  const [activeDelivery, setActiveDelivery] = useState(null)
+  const [deliveryPassword, setDeliveryPassword] = useState("")
+  const [deliveryError, setDeliveryError] = useState("")
 
   const scrollTo = (id) => {
     setActiveTab(id)
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
+  }
+
+  const openDeliveryGate = (file) => {
+    if (file.status !== "Ready") return
+
+    setActiveDelivery(file)
+    setDeliveryPassword("")
+    setDeliveryError("")
+  }
+
+  const closeDeliveryGate = () => {
+    setActiveDelivery(null)
+    setDeliveryPassword("")
+    setDeliveryError("")
+  }
+
+  const unlockDelivery = (event) => {
+    event.preventDefault()
+
+    if (!activeDelivery) return
+
+    if (deliveryPassword.trim() !== activeDelivery.password) {
+      setDeliveryError("Mật khẩu chưa đúng. Vui lòng thử lại.")
+      return
+    }
+
+    window.open(activeDelivery.link, "_blank", "noopener,noreferrer")
+    closeDeliveryGate()
   }
 
   return (
@@ -323,19 +357,58 @@ function App() {
                   </div>
                 </div>
 
-                <a
-                  href={file.link}
-                  target="_blank"
-                  rel="noreferrer"
+                <button
+                  type="button"
+                  onClick={() => openDeliveryGate(file)}
                   className={file.status === "Ready" ? "delivery-btn" : "delivery-btn disabled"}
                 >
                   {file.status === "Ready" ? "Nhận file ngay →" : "File chưa sẵn sàng"}
-                </a>
+                </button>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {activeDelivery && (
+        <div className="password-overlay" role="dialog" aria-modal="true">
+          <form className="password-modal" onSubmit={unlockDelivery}>
+            <button
+              type="button"
+              className="password-close"
+              onClick={closeDeliveryGate}
+              aria-label="Đóng"
+            >
+              ×
+            </button>
+
+            <p className="eyebrow">SECURE ACCESS</p>
+            <h3>Nhập mật khẩu nhận file</h3>
+            <p>
+              File: <b>{activeDelivery.fileName}</b>
+            </p>
+
+            <label htmlFor="delivery-password">Mật khẩu</label>
+            <input
+              id="delivery-password"
+              type="password"
+              value={deliveryPassword}
+              onChange={(event) => {
+                setDeliveryPassword(event.target.value)
+                setDeliveryError("")
+              }}
+              autoFocus
+              placeholder="Nhập mật khẩu khách hàng"
+            />
+
+            {deliveryError && <span className="password-error">{deliveryError}</span>}
+
+            <button type="submit" className="password-submit">
+              Mở link Drive
+            </button>
+          </form>
+        </div>
+      )}
 
       <section id="about" className="section about">
         <div>
