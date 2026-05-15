@@ -35,27 +35,69 @@ const socials = [
   },
 ]
 
-const projects = [
+const featuredPhotos = [
   {
-    name: "Project 01 — Cinematic Review",
-    role: "Biên kịch • Biên tập • Đạo diễn lồng tiếng",
-    video: "Video giới thiệu / thumbnail dự án",
-    link: "https://youtube.com",
-    desc: "Một dự án review mang màu sắc điện ảnh, tập trung vào nhịp kể, cảm xúc và hình ảnh.",
+    title: "Neon Evening",
+    image: "/gallery/photo-01.jpg",
+    location: "TP. Hồ Chí Minh",
+    capturedAt: "14/05/2026 • 18:42",
+    specs: "24mm • f/2.8 • ISO 400 • 1/125s",
+    mood: "Ánh đèn thành phố, tương phản mạnh",
   },
   {
-    name: "Project 02 — Media Campaign",
-    role: "Content Planner • Storyboard • Visual Concept",
-    video: "Video chiến dịch / short-form content",
-    link: "https://tiktok.com",
-    desc: "Dự án truyền thông ngắn, tối ưu cho TikTok/Reels với hook nhanh và visual mạnh.",
+    title: "Quiet Frame",
+    image: "/gallery/photo-02.jpg",
+    location: "Đà Lạt",
+    capturedAt: "22/04/2026 • 06:18",
+    specs: "35mm • f/1.8 • ISO 200 • 1/500s",
+    mood: "Sương sớm, màu dịu, nhịp chậm",
   },
   {
-    name: "Project 03 — Storytelling Series",
-    role: "Narrator • Research • Creative Direction",
-    video: "Video series kể chuyện",
-    link: "https://youtube.com",
-    desc: "Series nội dung kể chuyện, biến thông tin khô thành trải nghiệm dễ xem, dễ nhớ.",
+    title: "Street Motion",
+    image: "/gallery/photo-03.jpg",
+    location: "Quận 1, TP. Hồ Chí Minh",
+    capturedAt: "02/04/2026 • 20:09",
+    specs: "50mm • f/2.0 • ISO 800 • 1/250s",
+    mood: "Chuyển động đường phố, màu điện ảnh",
+  },
+  {
+    title: "Golden Detail",
+    image: "/gallery/photo-04.jpg",
+    location: "Vũng Tàu",
+    capturedAt: "16/03/2026 • 17:31",
+    specs: "70mm • f/4.0 • ISO 100 • 1/640s",
+    mood: "Nắng cuối ngày, chi tiết nổi bật",
+  },
+  {
+    title: "Low Light Portrait",
+    image: "/gallery/photo-05.jpg",
+    location: "Studio cá nhân",
+    capturedAt: "08/03/2026 • 21:15",
+    specs: "85mm • f/1.8 • ISO 640 • 1/160s",
+    mood: "Portrait ánh sáng thấp, viền sáng nhẹ",
+  },
+  {
+    title: "Clean Composition",
+    image: "/gallery/photo-06.jpg",
+    location: "Cần Thơ",
+    capturedAt: "21/02/2026 • 15:47",
+    specs: "28mm • f/5.6 • ISO 100 • 1/800s",
+    mood: "Bố cục tối giản, màu trong",
+  },
+]
+
+const featuredVideos = [
+  {
+    title: "Video tự quay dựng 01",
+    role: "Quay • Dựng • Color",
+    link: "#",
+    status: "Chưa gắn link",
+  },
+  {
+    title: "Video tự quay dựng 02",
+    role: "Quay • Dựng • Storytelling",
+    link: "#",
+    status: "Chưa gắn link",
   },
 ]
 
@@ -167,31 +209,65 @@ function App() {
       <section id="projects" className="section">
         <div className="section-head">
           <p className="eyebrow">SELECTED WORKS</p>
-          <h2>3 dự án nổi bật</h2>
+          <h2>6 khoảnh khắc nổi bật</h2>
           <p>
-            Khu vực quảng cáo những dự án đã thực hiện: video, link video, tên dự án và phần phụ trách.
+            Bộ ảnh nổi bật kèm địa điểm, thời gian chụp và thông số ảnh.
           </p>
         </div>
 
-        <div className="projects-grid">
-          {projects.map((project, index) => (
-            <div className="project-card" key={project.name}>
-              <div className="video-box">
-                <span>▶</span>
-                <p>{project.video}</p>
+        <div className="photo-gallery">
+          {featuredPhotos.map((photo, index) => (
+            <article className="photo-card" key={photo.title}>
+              <div className="photo-frame">
+                <img
+                  src={photo.image}
+                  alt={photo.title}
+                  onError={(event) => event.currentTarget.remove()}
+                />
+                <span>Ảnh 0{index + 1}</span>
               </div>
 
-              <div className="project-info">
-                <p className="project-number">0{index + 1}</p>
-                <h3>{project.name}</h3>
-                <p className="role">{project.role}</p>
-                <p className="desc">{project.desc}</p>
+              <div className="photo-info">
+                <p className="project-number">PHOTO 0{index + 1}</p>
+                <h3>{photo.title}</h3>
+                <p className="desc">{photo.mood}</p>
 
-                <a href={project.link} target="_blank" rel="noreferrer">
-                  Xem video →
-                </a>
+                <div className="photo-meta">
+                  <div>
+                    <span>Địa điểm</span>
+                    <p>{photo.location}</p>
+                  </div>
+                  <div>
+                    <span>Thời gian</span>
+                    <p>{photo.capturedAt}</p>
+                  </div>
+                  <div>
+                    <span>Thông số</span>
+                    <p>{photo.specs}</p>
+                  </div>
+                </div>
               </div>
-            </div>
+            </article>
+          ))}
+        </div>
+
+        <div className="video-showcase">
+          {featuredVideos.map((video, index) => (
+            <a
+              key={video.title}
+              href={video.link}
+              target="_blank"
+              rel="noreferrer"
+              className={video.link === "#" ? "video-slot disabled" : "video-slot"}
+            >
+              <span>▶</span>
+              <div>
+                <p>VIDEO 0{index + 1}</p>
+                <h3>{video.title}</h3>
+                <small>{video.role}</small>
+              </div>
+              <b>{video.status}</b>
+            </a>
           ))}
         </div>
       </section>
