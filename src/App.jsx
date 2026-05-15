@@ -102,7 +102,7 @@ const clientFiles = [
     fileName: "No source",
     type: "Chưa có sẵn",
     size: "~ ~",
-    status: "Ready",
+    status: "Processing",
     updated: "14/05/2026",
     link: "https://drive.google.com",
     password: "lumine2026",
