@@ -750,9 +750,9 @@ footer p {
 
   .hero-desc {
     max-width: 100%;
-    font-size: clamp(24px, 8vw, 38px);
-    line-height: 1.55;
-    margin: 62px 0 30px;
+    font-size: clamp(20px, 6vw, 30px);
+    line-height: 1.6;
+    margin: 52px 0 30px;
   }
 
   .hero-card {
@@ -848,8 +848,8 @@ footer p {
   }
 
   .hero-desc {
-    font-size: clamp(28px, 8.5vw, 40px);
-    line-height: 1.68;
+    font-size: clamp(20px, 6.2vw, 28px);
+    line-height: 1.62;
   }
 
   .hero-actions {
