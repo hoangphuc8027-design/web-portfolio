@@ -202,10 +202,10 @@ function App() {
 
       <section id="projects" className="section">
         <div className="section-head">
-          <p className="eyebrow">SELECTED WORKS</p>
-          <h2>6 khoảnh khắc nổi bật</h2>
+          <p className="eyebrow">FEATURED GALLERY</p>
+          <h2>Visual Stories</h2>
           <p>
-            Bộ ảnh nổi bật kèm địa điểm, thời gian chụp và thông số ảnh.
+            Selected photos with locations, capture time and camera settings.
           </p>
         </div>
 
