@@ -286,8 +286,8 @@ h1 .hero-subtitle {
 
 .photo-frame {
   position: relative;
-  min-height: 280px;
-  aspect-ratio: 4 / 5;
+  min-height: 240px;
+  aspect-ratio: 4 / 3;
   display: grid;
   place-items: center;
   overflow: hidden;
@@ -305,30 +305,20 @@ h1 .hero-subtitle {
   object-fit: cover;
 }
 
-.photo-frame span {
-  position: relative;
-  z-index: 1;
-  color: rgba(255,255,255,0.82);
-  font-size: 14px;
-  font-weight: 900;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-}
-
 .photo-info {
-  padding: 24px;
+  padding: 22px;
 }
 
 .photo-info h3 {
-  margin: 10px 0;
+  margin: 10px 0 18px;
   font-size: 25px;
   line-height: 1.1;
 }
 
 .photo-meta {
   display: grid;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 8px;
+  margin-top: 0;
 }
 
 .photo-meta div {
@@ -336,7 +326,7 @@ h1 .hero-subtitle {
   grid-template-columns: 92px 1fr;
   gap: 14px;
   align-items: baseline;
-  padding-top: 10px;
+  padding-top: 9px;
   border-top: 1px solid rgba(255,255,255,0.08);
 }
 
@@ -914,8 +904,8 @@ footer p {
   }
 
   .photo-frame {
-    min-height: 260px;
-    aspect-ratio: 16 / 11;
+    min-height: 230px;
+    aspect-ratio: 16 / 10;
   }
 
   .video-slot {
@@ -1035,11 +1025,12 @@ footer p {
   }
 
   .photo-info {
-    padding: 20px;
+    padding: 18px;
   }
 
   .photo-info h3 {
     font-size: 22px;
+    margin-bottom: 16px;
   }
 
   .photo-meta div {

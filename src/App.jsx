@@ -38,35 +38,31 @@ const socials = [
 const featuredPhotos = [
   {
     title: "Neon Evening",
-    image: "/gallery/photo-01.jpg",
+    image: "/gallery/photo-01.jpeg",
     location: "TP. Hồ Chí Minh",
     capturedAt: "14/05/2026 • 18:42",
     specs: "24mm • f/2.8 • ISO 400 • 1/125s",
-    mood: "Ánh đèn thành phố, tương phản mạnh",
   },
   {
     title: "Quiet Frame",
-    image: "/gallery/photo-02.jpg",
+    image: "/gallery/photo-02.jpeg",
     location: "Đà Lạt",
     capturedAt: "22/04/2026 • 06:18",
     specs: "35mm • f/1.8 • ISO 200 • 1/500s",
-    mood: "Sương sớm, màu dịu, nhịp chậm",
   },
   {
     title: "Street Motion",
-    image: "/gallery/photo-03.jpg",
+    image: "/gallery/photo-03.jpeg",
     location: "Quận 1, TP. Hồ Chí Minh",
     capturedAt: "02/04/2026 • 20:09",
     specs: "50mm • f/2.0 • ISO 800 • 1/250s",
-    mood: "Chuyển động đường phố, màu điện ảnh",
   },
   {
     title: "Golden Detail",
-    image: "/gallery/photo-04.jpg",
+    image: "/gallery/photo-04.jpeg",
     location: "Vũng Tàu",
     capturedAt: "16/03/2026 • 17:31",
     specs: "70mm • f/4.0 • ISO 100 • 1/640s",
-    mood: "Nắng cuối ngày, chi tiết nổi bật",
   },
   {
     title: "Low Light Portrait",
@@ -74,7 +70,6 @@ const featuredPhotos = [
     location: "Studio cá nhân",
     capturedAt: "08/03/2026 • 21:15",
     specs: "85mm • f/1.8 • ISO 640 • 1/160s",
-    mood: "Portrait ánh sáng thấp, viền sáng nhẹ",
   },
   {
     title: "Clean Composition",
@@ -82,7 +77,6 @@ const featuredPhotos = [
     location: "Cần Thơ",
     capturedAt: "21/02/2026 • 15:47",
     specs: "28mm • f/5.6 • ISO 100 • 1/800s",
-    mood: "Bố cục tối giản, màu trong",
   },
 ]
 
@@ -224,13 +218,11 @@ function App() {
                   alt={photo.title}
                   onError={(event) => event.currentTarget.remove()}
                 />
-                <span>Ảnh 0{index + 1}</span>
               </div>
 
               <div className="photo-info">
                 <p className="project-number">PHOTO 0{index + 1}</p>
                 <h3>{photo.title}</h3>
-                <p className="desc">{photo.mood}</p>
 
                 <div className="photo-meta">
                   <div>
