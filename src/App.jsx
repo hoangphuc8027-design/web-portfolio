@@ -61,12 +61,12 @@ const projects = [
 
 const clientFiles = [
   {
-    client: "Khách hàng A",
-    project: "Dự án 01 — Video Review",
-    fileName: "final-video-review.mp4",
-    type: "Video hoàn thiện",
-    size: "1.2GB",
-    status: "Ready",
+    client: "No Name",
+    project: "No content",
+    fileName: "No source",
+    type: "Chưa có sẵn",
+    size: "~ ~",
+    status: "Processing",
     updated: "14/05/2026",
     link: "https://drive.google.com",
   },
