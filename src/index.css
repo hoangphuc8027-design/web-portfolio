@@ -413,8 +413,9 @@ h1 .hero-subtitle {
 
 .delivery-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 420px));
   gap: 22px;
+  justify-content: center;
 }
 
 .delivery-card {

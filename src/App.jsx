@@ -92,6 +92,8 @@ const clientFiles = [
   },
 ]
 
+const visibleClientFiles = clientFiles.slice(0, 1)
+
 function App() {
   const [activeTab, setActiveTab] = useState("home")
 
@@ -215,7 +217,7 @@ function App() {
           </div>
 
           <div className="delivery-grid">
-            {clientFiles.map((file, index) => (
+            {visibleClientFiles.map((file, index) => (
               <div className="delivery-card" key={file.fileName}>
                 <div className="delivery-card-top">
                   <div>
