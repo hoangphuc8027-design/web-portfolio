@@ -419,12 +419,12 @@ function App() {
         <div className="about-grid">
           <div>
             <h3>🎬 Video Direction</h3>
-            <p>Lên mood, bố cục hình ảnh, nhịp dựng và cảm giác điện ảnh cho video.</p>
+            <p>Lên ý tưởng, biên kịch và hậu kỳ, storytelling.</p>
           </div>
 
           <div>
-            <h3>✍️ Script Writing</h3>
-            <p>Viết hook, kịch bản kể chuyện, lời dẫn và cấu trúc nội dung dễ giữ chân người xem.</p>
+            <h3>🤖 AI Creative</h3>
+            <p>AI tool, automation workflows và ứng dụng AI vào quy trình sản xuất nội dung media.</p>
           </div>
 
           <div>
