@@ -72,11 +72,11 @@ const featuredPhotos = [
     specs: "22mm • f/9 • ISO 160 • 1/400s",
   },
   {
-    title: "Sakura Path",
+    title: "High School Student",
     image: "/gallery/photo-06.jpg",
-    location: "Nagoya, Japan",
-    capturedAt: "01/04/2023 • 14:00",
-    specs: "45mm • f/8 • ISO 160 • 1/320s",
+    location: "Quang Trung High School",
+    capturedAt: "17/05/2026 • 9:00",
+    specs: "70mm • f/2.8 • ISO 500 • 1/640s",
   },
 ]
 
