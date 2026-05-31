@@ -95,6 +95,17 @@ const featuredVideos = [
   },
 ]
 
+const developmentProject = {
+  title: "Pixel World Online",
+  image: "/gallery/pixel-world-ultimate-bundle.png",
+  status: "Đang phát triển",
+  type: "Game pixel online",
+  server: "Máy chủ Việt Nam",
+  budget: "Khoảng 120tr VND",
+  description:
+    "Dự án game pixel online đang được phát triển với định hướng máy chủ Việt Nam, tối ưu cộng đồng người chơi trong nước và mở rộng nội dung theo từng giai đoạn.",
+}
+
 const clientFiles = [
   {
     client: "No Name",
@@ -199,7 +210,56 @@ function App() {
         </div>
       </nav>
 
-      <section id="home" className="hero">
+      <section id="home" className="development-hero">
+        <div className="development-copy">
+          <p className="eyebrow">PROJECT IN DEVELOPMENT</p>
+          <h1>{developmentProject.title}</h1>
+          <p className="development-desc">{developmentProject.description}</p>
+
+          <div className="development-stats">
+            <div>
+              <span>Trạng thái</span>
+              <b>{developmentProject.status}</b>
+            </div>
+            <div>
+              <span>Loại dự án</span>
+              <b>{developmentProject.type}</b>
+            </div>
+            <div>
+              <span>Hạ tầng</span>
+              <b>{developmentProject.server}</b>
+            </div>
+            <div>
+              <span>Quy mô</span>
+              <b>{developmentProject.budget}</b>
+            </div>
+          </div>
+
+          <div className="hero-actions">
+            <button onClick={() => scrollTo("projects")} className="main-btn">
+              Xem thêm dự án
+            </button>
+
+            <button onClick={() => scrollTo("contact")} className="ghost-btn">
+              Liên hệ hợp tác
+            </button>
+          </div>
+        </div>
+
+        <div className="development-visual">
+          <img
+            src={developmentProject.image}
+            alt="Pixel World Ultimate Bundle preview"
+            onError={(event) => event.currentTarget.remove()}
+          />
+          <div className="development-badge">
+            <span></span>
+            <b>{developmentProject.status}</b>
+          </div>
+        </div>
+      </section>
+
+      <section className="hero">
         <div className="noise"></div>
         <div className="spotlight"></div>
 
