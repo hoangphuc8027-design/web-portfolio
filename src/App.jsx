@@ -226,11 +226,11 @@ function App() {
               <b>{developmentProject.type}</b>
             </div>
             <div>
-              <span>Hạ tầng</span>
+              <span>Sever</span>
               <b>{developmentProject.server}</b>
             </div>
             <div>
-              <span>Quy mô</span>
+              <span>Kinh Phí</span>
               <b>{developmentProject.budget}</b>
             </div>
           </div>
