@@ -101,7 +101,7 @@ const developmentProject = {
   status: "Đang phát triển",
   type: "Game pixel online",
   server: "Máy chủ Việt Nam",
-  budget: "Khoảng 120tr VND",
+  budget: "~120.000.000vnđ",
   description:
     "Dự án game pixel online đang được phát triển với định hướng máy chủ Việt Nam, tối ưu cộng đồng người chơi trong nước và mở rộng nội dung theo từng giai đoạn.",
 }
