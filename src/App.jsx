@@ -496,7 +496,7 @@ function App() {
 
       <section id="contact" className="section contact">
         <p className="eyebrow">SOCIAL LINKS</p>
-        <h2>Kết nối với Lumine</h2>
+        <h2>Liên hệ với tôi</h2>
 
         <div className="socials">
           {socials.map((s) => {
