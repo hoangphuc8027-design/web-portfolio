@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import { FaFacebookF } from "react-icons/fa6"
 import { SiDiscord, SiInstagram, SiTiktok, SiZalo } from "react-icons/si"
 
@@ -132,12 +132,54 @@ const clientFiles = [
 ]
 
 const visibleClientFiles = clientFiles.slice(0, 1)
+const backgroundTrack = "SƠN THUỶ TRÙNG MÂY x THUỶ CHUNG x YẾN VÔ HIẾT (VIETZ x WI. REMIX) - JENA, ANH RỒNG,THƯƠNG VÕ,MÂY BAE"
+const displayedTrack = "SƠN THUỶ TRÙNG MÂY x THUỶ CHUNG x YẾN VÔ HIẾT (VIETZ x WI. REMIX)"
+
+function formatTime(seconds) {
+  if (!Number.isFinite(seconds) || seconds < 0) return "0:00"
+  return `${Math.floor(seconds / 60)}:${Math.floor(seconds % 60).toString().padStart(2, "0")}`
+}
 
 function App() {
+  const backgroundAudio = useRef(null)
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false)
+  const [musicTime, setMusicTime] = useState(0)
+  const [musicDuration, setMusicDuration] = useState(0)
+  const [musicVolume, setMusicVolume] = useState(0.35)
   const [activeTab, setActiveTab] = useState("home")
   const [activeDelivery, setActiveDelivery] = useState(null)
   const [deliveryPassword, setDeliveryPassword] = useState("")
   const [deliveryError, setDeliveryError] = useState("")
+
+  useEffect(() => {
+    if (backgroundAudio.current) backgroundAudio.current.volume = musicVolume
+  }, [musicVolume])
+
+  useEffect(() => {
+    const audio = backgroundAudio.current
+    if (!audio) return
+
+    audio.play()
+      .then(() => setIsMusicPlaying(true))
+      .catch(() => setIsMusicPlaying(false))
+  }, [])
+
+  const toggleBackgroundMusic = async () => {
+    const audio = backgroundAudio.current
+    if (!audio) return
+
+    if (audio.paused) {
+      try {
+        await audio.play()
+        setIsMusicPlaying(true)
+      } catch {
+        setIsMusicPlaying(false)
+      }
+    } else {
+      audio.pause()
+      setIsMusicPlaying(false)
+    }
+  }
 
   const scrollTo = (id) => {
     setActiveTab(id)
@@ -174,6 +216,47 @@ function App() {
 
   return (
     <div className="site">
+      <audio
+        ref={backgroundAudio}
+        src={`/music/${backgroundTrack}.mp3`}
+        loop
+        autoPlay
+        preload="none"
+        onTimeUpdate={(event) => setMusicTime(event.currentTarget.currentTime)}
+        onLoadedMetadata={(event) => setMusicDuration(event.currentTarget.duration || 0)}
+        onPlay={() => setIsMusicPlaying(true)}
+        onPause={() => setIsMusicPlaying(false)}
+      />
+      <aside className="music-player" aria-label="Trình phát nhạc nền">
+        <div className="music-player-top">
+          <div className={`music-art ${isMusicPlaying ? "is-playing" : ""}`} aria-hidden="true">♫</div>
+          <div className="music-track-info">
+            <span className="music-kicker">NOW PLAYING</span>
+            <strong title={displayedTrack}>{displayedTrack}</strong>
+          </div>
+          <button type="button" className="music-play-button" onClick={toggleBackgroundMusic} aria-pressed={isMusicPlaying} aria-label={isMusicPlaying ? "Tạm dừng nhạc" : "Phát nhạc"}>
+            <span aria-hidden="true">{isMusicPlaying ? "Ⅱ" : "▶"}</span>
+          </button>
+        </div>
+        <div className="music-progress-row">
+          <span>{formatTime(musicTime)}</span>
+          <input className="music-progress" type="range" min="0" max={musicDuration || 0} step="0.1" value={Math.min(musicTime, musicDuration || 0)} aria-label="Tiến trình phát nhạc" onChange={(event) => {
+            const nextTime = Number(event.target.value)
+            if (backgroundAudio.current) backgroundAudio.current.currentTime = nextTime
+            setMusicTime(nextTime)
+          }} />
+          <span>{formatTime(musicDuration)}</span>
+        </div>
+        <label className="music-volume-row">
+          <span aria-hidden="true">◖</span>
+          <input className="music-volume" type="range" min="0" max="1" step="0.01" value={musicVolume} aria-label="Âm lượng nhạc" onChange={(event) => {
+            const nextVolume = Number(event.target.value)
+            setMusicVolume(nextVolume)
+            if (backgroundAudio.current) backgroundAudio.current.volume = nextVolume
+          }} />
+        </label>
+      </aside>
+
       <nav className="navbar">
         <div className="brand" onClick={() => scrollTo("home")}>
           <span className="brand-dot"></span>
