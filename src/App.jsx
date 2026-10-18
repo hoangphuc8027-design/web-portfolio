@@ -147,6 +147,7 @@ function App() {
   const [musicDuration, setMusicDuration] = useState(0)
   const [musicVolume, setMusicVolume] = useState(0.35)
   const [activeTab, setActiveTab] = useState("home")
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [activeDelivery, setActiveDelivery] = useState(null)
   const [deliveryPassword, setDeliveryPassword] = useState("")
   const [deliveryError, setDeliveryError] = useState("")
@@ -183,6 +184,7 @@ function App() {
 
   const scrollTo = (id) => {
     setActiveTab(id)
+    setIsMenuOpen(false)
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" })
   }
 
@@ -229,9 +231,11 @@ function App() {
       />
       <aside className="music-player" aria-label="Trình phát nhạc nền">
         <div className="music-player-top">
-          <div className={`music-art ${isMusicPlaying ? "is-playing" : ""}`} aria-hidden="true">♫</div>
+          <div className={`music-art ${isMusicPlaying ? "is-playing" : ""}`} aria-hidden="true">
+            <span className="music-art-disc">♫</span>
+          </div>
           <div className="music-track-info">
-            <span className="music-kicker">NOW PLAYING</span>
+            <span className="music-kicker"><i className={isMusicPlaying ? "music-live-dot is-playing" : "music-live-dot"} /> NHẠC NỀN</span>
             <strong title={displayedTrack}>{displayedTrack}</strong>
           </div>
           <button type="button" className="music-play-button" onClick={toggleBackgroundMusic} aria-pressed={isMusicPlaying} aria-label={isMusicPlaying ? "Tạm dừng nhạc" : "Phát nhạc"}>
@@ -248,7 +252,7 @@ function App() {
           <span>{formatTime(musicDuration)}</span>
         </div>
         <label className="music-volume-row">
-          <span aria-hidden="true">◖</span>
+          <span aria-hidden="true">⌁</span>
           <input className="music-volume" type="range" min="0" max="1" step="0.01" value={musicVolume} aria-label="Âm lượng nhạc" onChange={(event) => {
             const nextVolume = Number(event.target.value)
             setMusicVolume(nextVolume)
@@ -263,7 +267,17 @@ function App() {
           <span>LUMINE</span>
         </div>
 
-        <div className="menu">
+        <button
+          type="button"
+          className={`menu-toggle ${isMenuOpen ? "is-open" : ""}`}
+          onClick={() => setIsMenuOpen((open) => !open)}
+          aria-expanded={isMenuOpen}
+          aria-label={isMenuOpen ? "Đóng menu" : "Mở menu"}
+        >
+          <span></span><span></span>
+        </button>
+
+        <div className={`menu ${isMenuOpen ? "is-open" : ""}`}>
           {[
             ["home", "Trang chủ"],
             ["projects", "Dự án"],
